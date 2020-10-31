@@ -28,7 +28,7 @@
   .nav__link:first-child {
     border-top: 1px solid rgba(196, 196, 196, 0.5);
     padding-top: 45px;
-    margin-top: -15px;
+    margin-top: -16px;
   }
   .nav__link {
     width: 100%;

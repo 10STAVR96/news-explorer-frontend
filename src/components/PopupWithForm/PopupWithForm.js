@@ -40,17 +40,45 @@ function PopupWithForm(props) {
         {(success) ? <p onClick={handleLinkToLogin} className="popup__login-link">Войти</p> :
           <>
             <label className="popup__input-title" htmlFor="email">Email</label>
-            <input id="email" className="popup__input" type="email" name="email" minLength="4" maxLength="50" required placeholder="Введите почту"/>
+            <input 
+              id="email" 
+              className="popup__input" 
+              type="email" name="email" 
+              minLength="4" 
+              maxLength="50" 
+              required 
+              placeholder="Введите почту"
+            />
             <span className="popup__input-error" id="email-error">Неправильный формат email</span>
             <label className="popup__input-title" htmlFor="password">Пароль</label>
-            <input id="password" className="popup__input" type="password" name="password" minLength="2" maxLength="100" required placeholder="Введите пароль"/>
+            <input 
+              id="password" 
+              className="popup__input" 
+              type="password" 
+              name="password" 
+              minLength="2" 
+              maxLength="100" 
+              required 
+              placeholder="Введите пароль"
+              pattern="[A-Za-zА-Яа-яЁё0-9 -]{2,20}"
+            />
             <span className="popup__input-error" id="password-error">Неправильный формат пароля</span>
           </>
         }
         {(isLogin) ? '' :
           <>
             <label className="popup__input-title" htmlFor="name">Имя</label>
-            <input id="name" className="popup__input" type="text" name="name" minLength="2" maxLength="30" required placeholder="Введите имя"/>
+            <input 
+              id="name" 
+              className="popup__input" 
+              type="text" 
+              name="name" 
+              minLength="2" 
+              maxLength="30" 
+              required 
+              placeholder="Введите имя"
+              pattern="[A-Za-zА-Яа-яЁё -]{2,40}"
+            />
             <span className="popup__input-error" id="name-error">Неправильный формат имени</span>
           </>
         }

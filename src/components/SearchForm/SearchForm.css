@@ -14,13 +14,13 @@
   background-size: cover;
   background-position: center;
   width: 100%;
-  margin-top: -80px;
+  margin-top: -81px;
   padding-top: 0;
   padding-bottom: 0;
 }
 
 @media screen and (max-width: 1023px) {
   .search {
-    margin-top: -66px;
+    margin-top: -67px;
   }
 }
