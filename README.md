@@ -1,1 +1,13 @@
-# news-explorer-frontend
+# Дипломная работа (Yandex)
+
+**Обзор**
+
+* Верстка по [макету](https://www.figma.com/file/Dhl21eRzzbFMBe0DU9SglF/Diploma-WEB-v2.0-(for-students)?node-id=6%3A116)
+* Файловая структура CSS - БЭМ
+* React JS
+
+Данный сайт представляет собой поиск новостей, с возможностью сохранять важные новости к себе в профиль
+
+## Запуск проекта
+
+`npm start` - запускает сервер
