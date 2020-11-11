@@ -14,17 +14,17 @@ function Footer() {
             <NavLink className="footer__link" to="/">Главная</NavLink>
           </li>
           <li>
-            <a className="footer__link" href="https://praktikum.yandex.ru/" target="_blank">Яндекс.Практикум</a>
+            <a className="footer__link" href="https://praktikum.yandex.ru/" target="_blank"  rel="noopener noreferrer">Яндекс.Практикум</a>
           </li>
         </ul>
         <ul className="footer__list footer__list_social">
           <li>
-            <a className="footer__link" href="https://github.com/10STAVR96" target="_blank">
+            <a className="footer__link" href="https://github.com/10STAVR96" target="_blank"  rel="noopener noreferrer">
               <img className="footer__icons" src={github} alt="github" />
             </a>
           </li>
           <li>
-            <a className="footer__link" href="https://www.facebook.com/profile.php?id=100010074348903" target="_blank">
+            <a className="footer__link" href="https://www.facebook.com/profile.php?id=100010074348903" target="_blank"  rel="noopener noreferrer">
               <img className="footer__icons" src={facebook} alt="facebook" />
             </a>
           </li>

@@ -1,6 +1,6 @@
 .card__image {
   width: auto;
-  max-height: 272px;
+  height: 272px;
   object-fit: cover;
   object-position: top;
   border-radius: 16px 16px 0 0;
@@ -8,12 +8,12 @@
 
 @media screen and (max-width: 1023px) {
   .card__image {
-    max-height: 150px;
+    height: 200px;
   }
 }
 
 @media screen and (max-width: 767px) {
   .card__image {
-    max-height: 196px;
+    height: 196px;
   }
 }
