@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, useHistory } from 'react-router-dom';
 import Header from '../Header/Header';
 import Main from '../Main/Main';
 import SavedNews from '../SavedNews/SavedNews';
@@ -21,6 +21,7 @@ function App() {
   const [articles, setArticles] = React.useState([]);
   const [articlesCounter, setArticlesCounter] = React.useState(2);
   const [savedArticles, setSavedArticles] = React.useState([]);
+  const history = useHistory();
   
   function handleLoginPopup() {
     setIsPopupWithFormOpened(true);
@@ -32,6 +33,7 @@ function App() {
     setCurrentUser({});
     localStorage.removeItem('token');
     setLoggedIn(false);
+    history.push('/');
   }
   function processingArticles(news, savedArticles) {
     const processedArticles = news.map((art) => {
@@ -171,6 +173,7 @@ function App() {
             savedArticles={savedArticles} 
             handleDeleteArticle={handleDeleteArticle} 
             component={SavedNews}
+            handleLoginPopup={handleLoginPopup}
           />
           <Route path="/">
             <Main

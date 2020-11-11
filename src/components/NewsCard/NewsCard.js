@@ -6,7 +6,7 @@ function NewsCard(props) {
   const { image, date, title, link, text, source, keyword } = article;
   const bookmarkIcon = (article._id && loggedIn) ? "bookmark-marked-icon" : "bookmark-icon";
   const trashcanIcon = "trashcan-icon";
-  const buttonMessage = (article._id && loggedIn) ? 'Убрать из сохранённых' : 'Войдите, чтобы сохранять статьи';
+  const buttonMessage = (loggedIn && !article._id) ? 'Сохранить статью' : 'Войдите, чтобы сохранять статьи';
 
   function cleanText(str) {
     return str.replace(/<\/?[^>]+(>|$)/g, ""); // чистит текст статьи от случайно попавших html тегов таких как <ol><li>
@@ -25,14 +25,13 @@ function NewsCard(props) {
       handleDeleteArticle(article._id);
     }
   }
-
   return (
     <>
       <li className="card">
         <img className="card__image" src={image} alt="картинка" />
         <div className="card__button-content">
           <button onClick={handleIconClick} className={`card__button ${(isSavedNews) ? trashcanIcon : bookmarkIcon }`} type="button" ></button>
-          <span className="card__button-message">{(isSavedNews) ? 'Убрать из сохранённых' : buttonMessage}</span>
+          <span className="card__button-message">{(isSavedNews || (article._id && loggedIn)) ?  'Убрать из сохранённых' : buttonMessage }</span>
         </div>
         <div className="card__text">
           <span className="card__date">{formatDate(date)}</span>

@@ -9,6 +9,7 @@ function PopupWithForm(props) {
   const [successRegistr, setSuccessRegistr] = React.useState(false);
   const [isSubmitError, setIsSubmitError] = React.useState(false);
   const [submitErrorMessage, setSubmitErrorMessage] = React.useState('');
+  const [disabledState, setDisabledInput] = React.useState(false);
 
   const validate = useFormWithValidation();
   const title = (isLogin) ? 'Вход' : 'Регистрация';
@@ -45,12 +46,13 @@ function PopupWithForm(props) {
     }
   }
   function handleSubmit(e) {
+    setDisabledInput(true);
     e.preventDefault();
     const email = validate.values.email;
     const password = validate.values.password;
     const name = validate.values.name;
 
-    (isLogin ? 
+    (isLogin ?
     MainApi.authorize(email, password)
       .then(({ token }) => {
         if(token) {
@@ -70,7 +72,8 @@ function PopupWithForm(props) {
       .catch((err) => {
         setSubmitErrorMessage(err);
         setIsSubmitError(true);
-      });
+      })
+      .finally(() => setDisabledInput(false));
     setTimeout(() => validate.resetForm(), 500);
   }
 
@@ -107,6 +110,7 @@ function PopupWithForm(props) {
               required 
               placeholder="Введите почту"
               value={validate.values.email || ''}
+              disabled={disabledState}
             />
             <span className={`popup__input-error ${(validate.errors.email) ? 'popup__input-error_visible' : ''}`} id="email-error">Неправильный формат email</span>
             <label className="popup__input-title" htmlFor="password">Пароль</label>
@@ -122,6 +126,7 @@ function PopupWithForm(props) {
               placeholder="Введите пароль"
               pattern="[A-Za-zА-Яа-яЁё0-9 -]{2,20}"
               value={validate.values.password || ''}
+              disabled={disabledState}
             />
             <span className={`popup__input-error ${(validate.errors.password) ? 'popup__input-error_visible' : ''}`} id="password-error">Неправильный формат пароля</span>
           </>
@@ -141,6 +146,7 @@ function PopupWithForm(props) {
               placeholder="Введите имя"
               pattern="[A-Za-zА-Яа-яЁё -]{2,40}"
               value={validate.values.name || ''}
+              disabled={disabledState}
             />
             <span className={`popup__input-error ${(validate.errors.name) ? 'popup__input-error_visible' : ''}`} id="name-error">Неправильный формат имени</span>
           </>
@@ -148,7 +154,7 @@ function PopupWithForm(props) {
         {(successRegistr) ? '' :
           <>
             <span className={`popup__submit-error ${(isSubmitError) ? 'popup__submit-error_visible' : ''}`} id="button-error">{submitErrorMessage}</span>
-            <button className={`popup__submit ${(validate.isValid) ? '' : 'popup__submit_disabled'}`} disabled={(validate.isValid) ? false : true} type="submit">{buttonSubmit}</button>
+            <button className={`popup__submit ${(validate.isValid || !disabledState) ? '' : 'popup__submit_disabled'}`} disabled={(validate.isValid || !disabledState) ? false : true} type="submit">{buttonSubmit}</button>
             <p className="popup__footer">или<span onClick={handleLinkFooter} className="popup__link">{link}</span></p>
           </>  
         }

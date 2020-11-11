@@ -2,10 +2,16 @@ import React from 'react';
 import { Route, Redirect } from "react-router-dom";
 
 function ProtectedRoute({ component: Component, ...props }) {
+  function redirectToLogin() {
+    props.handleLoginPopup();
+    return (
+      <Redirect to="./" />
+    );
+  }
   return (
     <Route>
       {
-        () => props.loggedIn ? <Component {...props} /> : <Redirect to="./" />
+        () => localStorage.getItem('token') ? <Component {...props} /> : redirectToLogin()
       }
     </Route>
   );
