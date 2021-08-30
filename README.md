@@ -2,7 +2,7 @@
 
 **Обзор**
 
-* Верстка по [макету](https://www.figma.com/file/Dhl21eRzzbFMBe0DU9SglF/Diploma-WEB-v2.0-(for-students)?node-id=6%3A116)
+* Верстка по макету Figma
 * Файловая структура CSS - БЭМ
 * React JS
 
